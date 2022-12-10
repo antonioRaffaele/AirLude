@@ -16,6 +16,7 @@ struct ContentView: View {
     
     
     var body: some View {
+        NavigationView{
             Form{
                 Section(){
                     TextField("Name" ,
@@ -41,7 +42,7 @@ struct ContentView: View {
                     
                 }
             }
-        
+        }
     }
     
     enum FormSubmissionError: Error {
@@ -58,8 +59,11 @@ struct ContentView: View {
         
         saveStudent()
         
-        EventsPage(selectedStudent: newStudent)
-
+        NavigationLink{
+            EventsPage(selectedStudent: newStudent)
+        }label:{
+            Text("")
+        }
     }
     
     private func saveStudent(){

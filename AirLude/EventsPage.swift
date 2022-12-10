@@ -49,8 +49,13 @@ struct EventsPage: View {
                                 VStack(alignment: .leading){
                                     Text(event.title ?? "")
                                         .bold().font(.system(size: 17))
-                                    Text("Card Number:")
-                                        .font(.system(size: 13))
+                                    
+                                    Text("Prova")
+                                        .foregroundColor(.primary)
+                                        .font(.largeTitle)
+                                        .padding()
+                                        .background(.pink.opacity(0.2))
+                                        .clipShape(Capsule())
 
                                     Text("Date: \(event.eventDate!, formatter: itemFormatter)")
                                         .font(.system(size: 13))
