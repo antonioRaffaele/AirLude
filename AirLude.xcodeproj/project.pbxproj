@@ -13,6 +13,13 @@
 		3B0175672940A17800ECB6DE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B0175662940A17800ECB6DE /* Preview Assets.xcassets */; };
 		3B0175692940A17800ECB6DE /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0175682940A17800ECB6DE /* Persistence.swift */; };
 		3B01756C2940A17800ECB6DE /* AirLude.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3B01756A2940A17800ECB6DE /* AirLude.xcdatamodeld */; };
+		3B11E447294227A0007CD5A3 /* SheetViewAddEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B11E446294227A0007CD5A3 /* SheetViewAddEvents.swift */; };
+		3B8DFAD129435F5A009E3919 /* EventsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8DFAD029435F5A009E3919 /* EventsPage.swift */; };
+		3B8DFAD6294365E3009E3919 /* Student+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8DFAD2294365E3009E3919 /* Student+CoreDataClass.swift */; };
+		3B8DFAD7294365E3009E3919 /* Student+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8DFAD3294365E3009E3919 /* Student+CoreDataProperties.swift */; };
+		3B8DFAD8294365E3009E3919 /* Event+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8DFAD4294365E3009E3919 /* Event+CoreDataClass.swift */; };
+		3B8DFAD9294365E3009E3919 /* Event+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8DFAD5294365E3009E3919 /* Event+CoreDataProperties.swift */; };
+		3BBED3582944D27C009FD0C6 /* EventDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBED3572944D27C009FD0C6 /* EventDetails.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +30,13 @@
 		3B0175662940A17800ECB6DE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3B0175682940A17800ECB6DE /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		3B01756B2940A17800ECB6DE /* AirLude.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AirLude.xcdatamodel; sourceTree = "<group>"; };
+		3B11E446294227A0007CD5A3 /* SheetViewAddEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetViewAddEvents.swift; sourceTree = "<group>"; };
+		3B8DFAD029435F5A009E3919 /* EventsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsPage.swift; sourceTree = "<group>"; };
+		3B8DFAD2294365E3009E3919 /* Student+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Student+CoreDataClass.swift"; sourceTree = "<group>"; };
+		3B8DFAD3294365E3009E3919 /* Student+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Student+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		3B8DFAD4294365E3009E3919 /* Event+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Event+CoreDataClass.swift"; sourceTree = "<group>"; };
+		3B8DFAD5294365E3009E3919 /* Event+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Event+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		3BBED3572944D27C009FD0C6 /* EventDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetails.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,7 +69,10 @@
 		3B01755E2940A17700ECB6DE /* AirLude */ = {
 			isa = PBXGroup;
 			children = (
+				3B8DFADA294365EF009E3919 /* CoreDataClasses */,
 				3B01755F2940A17700ECB6DE /* AirLudeApp.swift */,
+				3B11E446294227A0007CD5A3 /* SheetViewAddEvents.swift */,
+				3B8DFAD029435F5A009E3919 /* EventsPage.swift */,
 				3B0175612940A17700ECB6DE /* ContentView.swift */,
 				3B0175632940A17800ECB6DE /* Assets.xcassets */,
 				3B0175682940A17800ECB6DE /* Persistence.swift */,
@@ -71,6 +88,18 @@
 				3B0175662940A17800ECB6DE /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		3B8DFADA294365EF009E3919 /* CoreDataClasses */ = {
+			isa = PBXGroup;
+			children = (
+				3B8DFAD2294365E3009E3919 /* Student+CoreDataClass.swift */,
+				3B8DFAD3294365E3009E3919 /* Student+CoreDataProperties.swift */,
+				3B8DFAD4294365E3009E3919 /* Event+CoreDataClass.swift */,
+				3B8DFAD5294365E3009E3919 /* Event+CoreDataProperties.swift */,
+				3BBED3572944D27C009FD0C6 /* EventDetails.swift */,
+			);
+			path = CoreDataClasses;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,10 +172,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B8DFAD9294365E3009E3919 /* Event+CoreDataProperties.swift in Sources */,
 				3B0175692940A17800ECB6DE /* Persistence.swift in Sources */,
 				3B0175622940A17700ECB6DE /* ContentView.swift in Sources */,
+				3B8DFAD7294365E3009E3919 /* Student+CoreDataProperties.swift in Sources */,
 				3B01756C2940A17800ECB6DE /* AirLude.xcdatamodeld in Sources */,
+				3B8DFAD8294365E3009E3919 /* Event+CoreDataClass.swift in Sources */,
+				3B8DFAD6294365E3009E3919 /* Student+CoreDataClass.swift in Sources */,
+				3BBED3582944D27C009FD0C6 /* EventDetails.swift in Sources */,
 				3B0175602940A17700ECB6DE /* AirLudeApp.swift in Sources */,
+				3B8DFAD129435F5A009E3919 /* EventsPage.swift in Sources */,
+				3B11E447294227A0007CD5A3 /* SheetViewAddEvents.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
