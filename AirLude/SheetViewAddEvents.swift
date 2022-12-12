@@ -10,6 +10,7 @@ import PhotosUI
 
 struct SheetViewAddEvents: View {
     
+    
     @Environment(\.dismiss) var dismiss
     @Environment(\.managedObjectContext) private var viewContext
     
@@ -23,7 +24,7 @@ struct SheetViewAddEvents: View {
     @State private var hour = 0
     @State private var min = 0
 
-    var selectedStudent: Student
+
 
     var body: some View {
         NavigationView(){
@@ -151,7 +152,7 @@ struct SheetViewAddEvents: View {
 
 struct SheetViewAddEvents_Previews: PreviewProvider {
     static var previews: some View {
-        SheetViewAddEvents(selectedStudent: Student())
+        SheetViewAddEvents()
     }
 }
     

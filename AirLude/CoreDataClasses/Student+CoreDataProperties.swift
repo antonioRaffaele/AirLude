@@ -17,18 +17,10 @@ extension Student {
     }
 
     @NSManaged public var email: String?
-    @NSManaged public var name: String?
-    @NSManaged public var surname: String?
+    @NSManaged public var nameSurname: String?
     @NSManaged public var id: UUID?
     @NSManaged public var hasEvents: Event?
-
-    public var wrappedName:String{
-        name ?? "Unknown Name"
-    }
     
-    public var wrappedSurname:String{
-        surname ?? "Unknown Surname"
-    }
 }
 
 extension Student : Identifiable {

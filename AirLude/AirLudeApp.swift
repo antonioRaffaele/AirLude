@@ -9,12 +9,18 @@ import SwiftUI
 
 @main
 struct AirLudeApp: App {
+    @AppStorage("loaded") var firstAccess: Bool = false
     let persistenceController = PersistenceController.shared
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            if(firstAccess == false){
+                ContentView()
+                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            }else{
+                EventsPage()
+                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            }
         }
     }
 }

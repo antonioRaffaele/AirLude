@@ -16,8 +16,7 @@
     <entity name="Student" representedClassName="Student" syncable="YES">
         <attribute name="email" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="name" optional="YES" attributeType="String"/>
-        <attribute name="surname" optional="YES" attributeType="String"/>
+        <attribute name="nameSurname" optional="YES" attributeType="String"/>
         <relationship name="hasEvents" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Event" inverseName="hasAStudent" inverseEntity="Event"/>
     </entity>
 </model>

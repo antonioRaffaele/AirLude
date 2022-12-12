@@ -14,6 +14,8 @@
 		3B0175692940A17800ECB6DE /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0175682940A17800ECB6DE /* Persistence.swift */; };
 		3B01756C2940A17800ECB6DE /* AirLude.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3B01756A2940A17800ECB6DE /* AirLude.xcdatamodeld */; };
 		3B11E447294227A0007CD5A3 /* SheetViewAddEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B11E446294227A0007CD5A3 /* SheetViewAddEvents.swift */; };
+		3B27AA75294720D400B7C926 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B27AA74294720D400B7C926 /* Models.swift */; };
+		3B2EAAC92947378500F28D25 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2EAAC82947378500F28D25 /* SearchBar.swift */; };
 		3B8DFAD129435F5A009E3919 /* EventsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8DFAD029435F5A009E3919 /* EventsPage.swift */; };
 		3B8DFAD6294365E3009E3919 /* Student+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8DFAD2294365E3009E3919 /* Student+CoreDataClass.swift */; };
 		3B8DFAD7294365E3009E3919 /* Student+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8DFAD3294365E3009E3919 /* Student+CoreDataProperties.swift */; };
@@ -31,6 +33,8 @@
 		3B0175682940A17800ECB6DE /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		3B01756B2940A17800ECB6DE /* AirLude.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AirLude.xcdatamodel; sourceTree = "<group>"; };
 		3B11E446294227A0007CD5A3 /* SheetViewAddEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetViewAddEvents.swift; sourceTree = "<group>"; };
+		3B27AA74294720D400B7C926 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		3B2EAAC82947378500F28D25 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		3B8DFAD029435F5A009E3919 /* EventsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsPage.swift; sourceTree = "<group>"; };
 		3B8DFAD2294365E3009E3919 /* Student+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Student+CoreDataClass.swift"; sourceTree = "<group>"; };
 		3B8DFAD3294365E3009E3919 /* Student+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Student+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -71,8 +75,10 @@
 			children = (
 				3B8DFADA294365EF009E3919 /* CoreDataClasses */,
 				3B01755F2940A17700ECB6DE /* AirLudeApp.swift */,
+				3B27AA74294720D400B7C926 /* Models.swift */,
 				3B11E446294227A0007CD5A3 /* SheetViewAddEvents.swift */,
 				3B8DFAD029435F5A009E3919 /* EventsPage.swift */,
+				3B2EAAC82947378500F28D25 /* SearchBar.swift */,
 				3B0175612940A17700ECB6DE /* ContentView.swift */,
 				3B0175632940A17800ECB6DE /* Assets.xcassets */,
 				3B0175682940A17800ECB6DE /* Persistence.swift */,
@@ -172,9 +178,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B2EAAC92947378500F28D25 /* SearchBar.swift in Sources */,
 				3B8DFAD9294365E3009E3919 /* Event+CoreDataProperties.swift in Sources */,
 				3B0175692940A17800ECB6DE /* Persistence.swift in Sources */,
 				3B0175622940A17700ECB6DE /* ContentView.swift in Sources */,
+				3B27AA75294720D400B7C926 /* Models.swift in Sources */,
 				3B8DFAD7294365E3009E3919 /* Student+CoreDataProperties.swift in Sources */,
 				3B01756C2940A17800ECB6DE /* AirLude.xcdatamodeld in Sources */,
 				3B8DFAD8294365E3009E3919 /* Event+CoreDataClass.swift in Sources */,
