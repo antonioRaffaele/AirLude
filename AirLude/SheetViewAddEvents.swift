@@ -10,9 +10,23 @@ import PhotosUI
 
 struct SheetViewAddEvents: View {
     
+    private var user = UserDefaults.standard.string(forKey: "username")
+    
+    @FetchRequest(
+        sortDescriptors: []
+    ) var result: FetchedResults<Student>
+    
+    var selectedStudent :[Student] {
+        result
+            .filter({ student in
+                //print(doc.hasAProfile?.id ?? Profile(), selectedProfile.id ?? Profile())
+                return student.nameSurname == user
+            })
+    }
     
     @Environment(\.dismiss) var dismiss
     @Environment(\.managedObjectContext) private var viewContext
+    
     
     @State private var title: String = ""
     @State private var eventDate: Date = Date()
@@ -33,7 +47,6 @@ struct SheetViewAddEvents: View {
                 
                 List{
                     Section(){
-                        
                             TextField("Event Title" ,
                                       text : $title)
                             
@@ -117,7 +130,7 @@ struct SheetViewAddEvents: View {
         newEvent.id = UUID()
         //newEvent.qrCode =
         
-        //newEvent.hasAStudent = self.selectedStudent
+        newEvent.hasAStudent = self.selectedStudent.first
 
         saveEvent()
     }

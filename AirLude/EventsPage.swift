@@ -10,30 +10,34 @@ import CoreData
 
 struct EventsPage: View {
     @Environment(\.managedObjectContext) private var viewContext
+   
+    
+    @AppStorage("shouldShowOnboarding") var shouldShowOnboarding: Bool = true
+    @State private var showingSheet = false
+    private var user = UserDefaults.standard.string(forKey: "username")
     
     @FetchRequest(
         sortDescriptors: []
     ) var EventsArr: FetchedResults<Event>
     
-    //    var events :[Event] {
-    //        EventsArr
-    //            .filter({ event in
-    //                //print(doc.hasAProfile?.id ?? Profile(), selectedProfile.id ?? Profile())
-    //                return event.hasAStudent?.id == selectedStudent.id
-    //            })
-    //    }
-    
-    @State private var showingSheet = false
+    //serve per creare un array di eventi creati dallo user
+    var events :[Event] {
+        EventsArr
+            .filter({ event in
+                //print(doc.hasAProfile?.id ?? Profile(), selectedProfile.id ?? Profile())
+                return event.hasAStudent?.nameSurname == user
+            })
+    }
     
     var body: some View {
         VStack(spacing: 10){
             NavigationView{
-                Text("PROVAAAa")
+                
                 List{
                     ForEach(EventsArr) { event in
                         Section{
                             NavigationLink{
-                                //EventDetails(selectedCard: event)
+                                EventDetails(selectedEvent: event)
                             } label: {
                                 HStack{
                                     
@@ -68,7 +72,7 @@ struct EventsPage: View {
                     }
                 }
                 .listStyle(.insetGrouped)
-                .navigationTitle("Cards")
+                .navigationTitle("Events")
                 .toolbar{
                     ToolbarItem{
                         Button{
@@ -82,7 +86,9 @@ struct EventsPage: View {
                         }
                     }
                 }
-            }
+            }.fullScreenCover(isPresented: $shouldShowOnboarding, content: {
+                OnBoarding(shouldShowOnboarding: $shouldShowOnboarding)
+        })
         }
     }
     

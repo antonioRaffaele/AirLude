@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct EventDetails: View {
+    
+    var selectedEvent: Event
+    
     var body: some View {
         
         VStack(spacing: 10){
@@ -34,7 +37,8 @@ struct EventDetails: View {
                     Image(systemName: "calendar")
                 }.padding(.leading, 16)
                 Spacer()
-                Text("Data").padding(.trailing, 20)
+                Text("\(selectedEvent.eventDate!, formatter: itemFormatter)")
+                    .padding(.trailing, 20)
             }
             
             HStack{
@@ -44,7 +48,7 @@ struct EventDetails: View {
                     Image(systemName: "arrowtriangle.down.circle")
                 }.padding(.leading, 16)
                 Spacer()
-                Text("Data").padding(.trailing, 20)
+                Text("\(selectedEvent.category!)").padding(.trailing, 20)
             }
             
             HStack{
@@ -123,8 +127,15 @@ struct EventDetails: View {
     }
 }
 
-struct EventDetails_Previews: PreviewProvider {
-    static var previews: some View {
-        EventDetails()
-    }
-}
+private let itemFormatter: DateFormatter = {
+    let formatter = DateFormatter()
+    formatter.dateStyle = .short
+    formatter.dateFormat = "dd/MM/yyyy"
+    return formatter
+}()
+
+//struct EventDetails_Previews: PreviewProvider {
+//    static var previews: some View {
+//        EventDetails()
+//    }
+//}

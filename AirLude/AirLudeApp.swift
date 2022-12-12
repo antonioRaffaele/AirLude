@@ -14,13 +14,8 @@ struct AirLudeApp: App {
 
     var body: some Scene {
         WindowGroup {
-            if(firstAccess == false){
-                ContentView()
-                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
-            }else{
                 EventsPage()
                     .environment(\.managedObjectContext, persistenceController.container.viewContext)
-            }
         }
     }
 }
