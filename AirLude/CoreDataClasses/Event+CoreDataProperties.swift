@@ -23,6 +23,7 @@ extension Event {
     @NSManaged public var id: UUID?
     @NSManaged public var qrCode: Data?
     @NSManaged public var title: String?
+    @NSManaged public var location: String?
     @NSManaged public var hasAStudent: Student?
     
     public var wrappedEventTypo: String{

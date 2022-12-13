@@ -6,6 +6,7 @@
         <attribute name="duration" optional="YES" attributeType="String"/>
         <attribute name="eventDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="location" optional="YES" attributeType="String"/>
         <attribute name="qrCode" optional="YES" attributeType="Binary"/>
         <attribute name="title" optional="YES" attributeType="String"/>
         <relationship name="hasAStudent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Student" inverseName="hasEvents" inverseEntity="Student"/>

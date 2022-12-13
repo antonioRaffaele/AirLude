@@ -31,6 +31,7 @@ struct EventsPage: View {
                         ShowAllEventsSection()
                     }
                 }
+                .background(Color(.systemGroupedBackground))
                 .navigationTitle("Events")
                 .toolbar{
                     ToolbarItem{
@@ -49,7 +50,6 @@ struct EventsPage: View {
                     OnBoarding(shouldShowOnboarding: $shouldShowOnboarding)
                 })
             }
-            
         }
     }
     

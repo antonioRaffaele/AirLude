@@ -12,16 +12,6 @@ struct EventInfos: View {
     var selectedEvent: Event
     
     var body: some View {
-        HStack{
-            Label {
-                Text("Created by").bold()
-            } icon: {
-                Image(systemName: "person.circle")
-            }.padding(.leading, 16)
-            Spacer()
-            Text("author")
-                .padding(.trailing, 20)
-        }
         
         HStack{
             Label {
@@ -30,7 +20,7 @@ struct EventInfos: View {
                 Image(systemName: "calendar")
             }.padding(.leading, 16)
             Spacer()
-            Text("\(selectedEvent.eventDate!, formatter: itemFormatter)")
+            Text("\(selectedEvent.eventDate!, formatter: dateFormatter)")
                 .padding(.trailing, 20)
         }
         
@@ -51,7 +41,7 @@ struct EventInfos: View {
                 Image(systemName: "clock")
             }.padding(.leading, 16)
             Spacer()
-            Text("Data").padding(.trailing, 20)
+            Text("\(selectedEvent.eventDate!, formatter: timeFormatter)").padding(.trailing, 20)
         }
         
         HStack{
@@ -61,7 +51,7 @@ struct EventInfos: View {
                 Image(systemName: "hourglass.circle")
             }.padding(.leading, 16)
             Spacer()
-            Text("Data").padding(.trailing, 20)
+            Text(selectedEvent.duration ?? "duration").padding(.trailing, 20)
         }
         
         HStack{
@@ -71,15 +61,33 @@ struct EventInfos: View {
                 Image(systemName: "location.circle")
             }.padding(.leading, 16)
             Spacer()
-            Text("Data").padding(.trailing, 20)
+            Text(selectedEvent.location ?? "location").padding(.trailing, 20)
+        }
+        
+        HStack{
+            Label {
+                Text("Created by").bold()
+            } icon: {
+                Image(systemName: "person.circle")
+            }.padding(.leading, 16)
+            Spacer()
+            Text(selectedEvent.hasAStudent?.nameSurname ?? "author")
+                .padding(.trailing, 20)
         }
     }
 }
 
-private let itemFormatter: DateFormatter = {
+private let dateFormatter: DateFormatter = {
     let formatter = DateFormatter()
     formatter.dateStyle = .short
     formatter.dateFormat = "dd/MM/yyyy"
+    return formatter
+}()
+
+private let timeFormatter: DateFormatter = {
+    let formatter = DateFormatter()
+    formatter.dateStyle = .short
+    formatter.dateFormat = "HH:mm"
     return formatter
 }()
 

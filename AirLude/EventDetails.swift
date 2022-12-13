@@ -18,12 +18,12 @@ struct EventDetails: View {
                 .fill(LinearGradient(
                     gradient: .init(colors: [.orange,.red]),
                     startPoint: .leading,
-                  endPoint: .bottom))
+                    endPoint: .bottom))
                 .frame(height: 150)
-
+            
             HStack{
                 Label{
-                    Text("Chess Tournament").font(.largeTitle).bold()
+                    Text(selectedEvent.title ?? "").font(.largeTitle).bold()
                 } icon:{
                     //Image("")
                 }
@@ -37,14 +37,25 @@ struct EventDetails: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding()
                 
-                Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.")
+                Text(selectedEvent.details ?? "")
+                    .frame(maxWidth: .infinity, alignment: .leading)
                     .padding()
+                    .lineLimit(1)
             }
             
             Spacer()
             
             CustomizedButton(buttonText: "Show QrCode")
-        }
+        }.navigationBarTitleDisplayMode(.inline)
+            .toolbar{
+                ToolbarItem{
+                    Button{
+                        print("dhahd")
+                    }label: {
+                        Text("Leave Event").foregroundColor(Color(.red))
+                    }
+                }
+            }
     }
 }
 

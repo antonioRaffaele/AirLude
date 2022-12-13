@@ -31,12 +31,14 @@ struct SheetViewAddEvents: View {
     @State private var title: String = ""
     @State private var eventDate: Date = Date()
     //@State private var qrCode: UIImage = UIImage(named: "qrCode")! //??
-    @State private var duration: String = ""
+    
     @State private var details: String = ""
-    @State private var category: String = ""
+    @State private var category: String = "Tournament"
+    @State private var location: String = ""
     
     @State private var hour = 0
     @State private var min = 0
+    @State private var duration: String = ""
 
 
 
@@ -47,11 +49,14 @@ struct SheetViewAddEvents: View {
                 
                 List{
                     Section(){
-                            TextField("Event Title" ,
+                            TextField("Title" ,
                                       text : $title)
                             
-                            TextField("Event Description" ,
+                            TextField("Description" ,
                                       text : $details)
+                        
+                            TextField("Location" ,
+                                  text : $location)
                     }
                     
                     Section(){
@@ -91,6 +96,8 @@ struct SheetViewAddEvents: View {
                 .navigationBarItems(trailing: Button(action: {
                     
                     do {
+                        duration = "\(hour)" + "h " + "\(min)" + "m"
+                        print(location)
                         try
                         addEvent()
                         dismiss()
@@ -119,7 +126,7 @@ struct SheetViewAddEvents: View {
     
     
     private func addEvent() throws{
-        guard self.title != "" && self.details != ""  else {throw FormSubmissionError.missingInput}
+        guard self.title != "" && self.details != "" && self.hour != 0 && self.location != ""  else {throw FormSubmissionError.missingInput}
         let newEvent = Event(context: viewContext)
         
         newEvent.title = self.title
@@ -127,10 +134,10 @@ struct SheetViewAddEvents: View {
         newEvent.eventDate = self.eventDate
         newEvent.duration = self.duration
         newEvent.category = self.category
+        newEvent.location = self.location
         newEvent.id = UUID()
-        //newEvent.qrCode =
-        
         newEvent.hasAStudent = self.selectedStudent.first
+        //newEvent.qrCode =
 
         saveEvent()
     }
