@@ -19,6 +19,11 @@
 		3B8DFAD7294365E3009E3919 /* Student+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8DFAD3294365E3009E3919 /* Student+CoreDataProperties.swift */; };
 		3B8DFAD8294365E3009E3919 /* Event+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8DFAD4294365E3009E3919 /* Event+CoreDataClass.swift */; };
 		3B8DFAD9294365E3009E3919 /* Event+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8DFAD5294365E3009E3919 /* Event+CoreDataProperties.swift */; };
+		3B8E525829486F0600CFC297 /* EventInfos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8E525729486F0600CFC297 /* EventInfos.swift */; };
+		3B8E525A2948708300CFC297 /* CustomizedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8E52592948708300CFC297 /* CustomizedButton.swift */; };
+		3B8E525C294872EC00CFC297 /* ShowAllEventsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8E525B294872EC00CFC297 /* ShowAllEventsSection.swift */; };
+		3B8E525E294872FB00CFC297 /* CreatedEventsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8E525D294872FB00CFC297 /* CreatedEventsSection.swift */; };
+		3B8E52602948735600CFC297 /* CardViewEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8E525F2948735600CFC297 /* CardViewEvent.swift */; };
 		3BBED3582944D27C009FD0C6 /* EventDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBED3572944D27C009FD0C6 /* EventDetails.swift */; };
 		3BBFA83E29477B1B00E8998F /* SelectionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBFA83D29477B1B00E8998F /* SelectionRow.swift */; };
 /* End PBXBuildFile section */
@@ -37,6 +42,11 @@
 		3B8DFAD3294365E3009E3919 /* Student+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Student+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		3B8DFAD4294365E3009E3919 /* Event+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Event+CoreDataClass.swift"; sourceTree = "<group>"; };
 		3B8DFAD5294365E3009E3919 /* Event+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Event+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		3B8E525729486F0600CFC297 /* EventInfos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInfos.swift; sourceTree = "<group>"; };
+		3B8E52592948708300CFC297 /* CustomizedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizedButton.swift; sourceTree = "<group>"; };
+		3B8E525B294872EC00CFC297 /* ShowAllEventsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAllEventsSection.swift; sourceTree = "<group>"; };
+		3B8E525D294872FB00CFC297 /* CreatedEventsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatedEventsSection.swift; sourceTree = "<group>"; };
+		3B8E525F2948735600CFC297 /* CardViewEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewEvent.swift; sourceTree = "<group>"; };
 		3BBED3572944D27C009FD0C6 /* EventDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetails.swift; sourceTree = "<group>"; };
 		3BBFA83D29477B1B00E8998F /* SelectionRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -74,6 +84,12 @@
 				3BBFA83C29477AFB00E8998F /* Utils */,
 				3B8DFADA294365EF009E3919 /* CoreDataClasses */,
 				3B01755F2940A17700ECB6DE /* AirLudeApp.swift */,
+				3B8E525F2948735600CFC297 /* CardViewEvent.swift */,
+				3B8E525B294872EC00CFC297 /* ShowAllEventsSection.swift */,
+				3B8E52592948708300CFC297 /* CustomizedButton.swift */,
+				3B8E525D294872FB00CFC297 /* CreatedEventsSection.swift */,
+				3BBED3572944D27C009FD0C6 /* EventDetails.swift */,
+				3B8E525729486F0600CFC297 /* EventInfos.swift */,
 				3B11E446294227A0007CD5A3 /* SheetViewAddEvents.swift */,
 				3B8DFAD029435F5A009E3919 /* EventsPage.swift */,
 				3B0175632940A17800ECB6DE /* Assets.xcassets */,
@@ -99,7 +115,6 @@
 				3B8DFAD3294365E3009E3919 /* Student+CoreDataProperties.swift */,
 				3B8DFAD4294365E3009E3919 /* Event+CoreDataClass.swift */,
 				3B8DFAD5294365E3009E3919 /* Event+CoreDataProperties.swift */,
-				3BBED3572944D27C009FD0C6 /* EventDetails.swift */,
 			);
 			path = CoreDataClasses;
 			sourceTree = "<group>";
@@ -186,13 +201,18 @@
 				3B2EAAC92947378500F28D25 /* OnBoarding.swift in Sources */,
 				3BBFA83E29477B1B00E8998F /* SelectionRow.swift in Sources */,
 				3B8DFAD9294365E3009E3919 /* Event+CoreDataProperties.swift in Sources */,
+				3B8E52602948735600CFC297 /* CardViewEvent.swift in Sources */,
+				3B8E525E294872FB00CFC297 /* CreatedEventsSection.swift in Sources */,
 				3B0175692940A17800ECB6DE /* Persistence.swift in Sources */,
 				3B8DFAD7294365E3009E3919 /* Student+CoreDataProperties.swift in Sources */,
+				3B8E525C294872EC00CFC297 /* ShowAllEventsSection.swift in Sources */,
 				3B01756C2940A17800ECB6DE /* AirLude.xcdatamodeld in Sources */,
 				3B8DFAD8294365E3009E3919 /* Event+CoreDataClass.swift in Sources */,
 				3B8DFAD6294365E3009E3919 /* Student+CoreDataClass.swift in Sources */,
+				3B8E525A2948708300CFC297 /* CustomizedButton.swift in Sources */,
 				3BBED3582944D27C009FD0C6 /* EventDetails.swift in Sources */,
 				3B0175602940A17700ECB6DE /* AirLudeApp.swift in Sources */,
+				3B8E525829486F0600CFC297 /* EventInfos.swift in Sources */,
 				3B8DFAD129435F5A009E3919 /* EventsPage.swift in Sources */,
 				3B11E447294227A0007CD5A3 /* SheetViewAddEvents.swift in Sources */,
 			);

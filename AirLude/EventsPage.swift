@@ -10,68 +10,27 @@ import CoreData
 
 struct EventsPage: View {
     @Environment(\.managedObjectContext) private var viewContext
-   
+    
+    @State private var selectedSegment = 0
     
     @AppStorage("shouldShowOnboarding") var shouldShowOnboarding: Bool = true
     @State private var showingSheet = false
-    private var user = UserDefaults.standard.string(forKey: "username")
-    
-    @FetchRequest(
-        sortDescriptors: []
-    ) var EventsArr: FetchedResults<Event>
-    
-    //serve per creare un array di eventi creati dallo user
-    var events :[Event] {
-        EventsArr
-            .filter({ event in
-                //print(doc.hasAProfile?.id ?? Profile(), selectedProfile.id ?? Profile())
-                return event.hasAStudent?.nameSurname == user
-            })
-    }
     
     var body: some View {
         VStack(spacing: 10){
             NavigationView{
-                
-                List{
-                    ForEach(EventsArr) { event in
-                        Section{
-                            NavigationLink{
-                                EventDetails(selectedEvent: event)
-                            } label: {
-                                HStack{
-                                    
-                                    Image("party.popper")
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fill)
-                                        .frame(width: 70.0,height: 70.0)
-                                        .clipped()
-                                        .cornerRadius(50)
-                                        .padding(.leading, 14)
-                                    
-                                    
-                                    VStack(alignment: .leading){
-                                        Text(event.title ?? "")
-                                            .bold().font(.system(size: 17))
-                                        
-                                        Text("Prova")
-                                            .foregroundColor(.primary)
-                                            .font(.largeTitle)
-                                            .padding()
-                                            .background(.pink.opacity(0.2))
-                                            .clipShape(Capsule())
-                                        
-                                        Text("Date: \(event.eventDate!, formatter: itemFormatter)")
-                                            .font(.system(size: 13))
-                                        
-                                    }
-                                }
-                            }
-                            
-                        }
+                VStack{
+                    Picker("Choose the section", selection: $selectedSegment) {
+                        Text("Show All").tag(0)
+                        Text("Created").tag(1)
+                    }.padding()
+                        .pickerStyle(.segmented)
+                    if(selectedSegment == 1){
+                        CreatedEventsSection()
+                    }else{
+                        ShowAllEventsSection()
                     }
                 }
-                .listStyle(.insetGrouped)
                 .navigationTitle("Events")
                 .toolbar{
                     ToolbarItem{
@@ -86,9 +45,11 @@ struct EventsPage: View {
                         }
                     }
                 }
-            }.fullScreenCover(isPresented: $shouldShowOnboarding, content: {
-                OnBoarding(shouldShowOnboarding: $shouldShowOnboarding)
-        })
+                .fullScreenCover(isPresented: $shouldShowOnboarding, content: {
+                    OnBoarding(shouldShowOnboarding: $shouldShowOnboarding)
+                })
+            }
+            
         }
     }
     
