@@ -16,8 +16,9 @@ struct EventsPage: View {
     @AppStorage("shouldShowOnboarding") var shouldShowOnboarding: Bool = true
     @State private var showingSheet = false
     
+    @State private var showingAlert = false
+    
     var body: some View {
-        VStack(spacing: 10){
             NavigationView{
                 VStack{
                     Picker("Choose the section", selection: $selectedSegment) {
@@ -31,12 +32,27 @@ struct EventsPage: View {
                         ShowAllEventsSection()
                     }
                 }
+                .alert("Perform an action:",isPresented: $showingAlert){
+                    Button {
+                        print("")
+                    } label: {
+                        Text("SCAN")
+                    }
+                    Button {
+                        showingSheet.toggle()
+                    } label: {
+                        Text("ADD")
+                    }.sheet(isPresented: $showingSheet){
+                        SheetViewAddEvents()
+                    }
+                }
                 .background(Color(.systemGroupedBackground))
                 .navigationTitle("Events")
                 .toolbar{
                     ToolbarItem{
                         Button{
-                            showingSheet.toggle()
+                            showingAlert.toggle()
+                            //showingSheet.toggle()
                             
                         }label: {
                             Label("Add Item", systemImage: "plus")
@@ -50,7 +66,6 @@ struct EventsPage: View {
                     OnBoarding(shouldShowOnboarding: $shouldShowOnboarding)
                 })
             }
-        }
     }
     
 }

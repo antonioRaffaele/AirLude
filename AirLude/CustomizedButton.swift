@@ -24,7 +24,9 @@ struct CustomizedButton: View {
                     .blur(radius: 10)
             )
             .padding(.top, 20)
-            Button(action: {}, label: {
+            Button(action: {
+                
+            }, label: {
                 Text(buttonText)
                     .font(.custom("Avenir-Heavy", size: 20))
                     .padding(.top, 10)

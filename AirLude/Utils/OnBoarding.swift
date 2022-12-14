@@ -17,39 +17,69 @@ struct OnBoarding: View {
     
     @State private var searchText = ""
     @State var selectedItem: String?
+    
+    let orageGradient = LinearGradient(
+        gradient: .init(colors: [Color.orange, Color.red.opacity(0.75)]),
+        startPoint: .init(x: -0.33, y: -0.33),
+        endPoint: .init(x: 0.66, y: 0.66)
+    )
 
     var body: some View {
         NavigationStack {
-            List {
-                ForEach(searchResults, id: \.self) { name in
-                    SelectionRow(title: name, selectedItem: $selectedItem)
+            VStack{
+                List {
+                    ForEach(searchResults, id: \.self) { name in
+                        SelectionRow(title: name, selectedItem: $selectedItem)
+                    }
                 }
-            }
-            .navigationTitle("Contacts")
-            
-            Button {
+                //.background(Color(.systemGroupedBackground))
+                .navigationTitle("Welcome student!")
                 
-                username = selectedItem!
-                firstAccess = true
-                shouldShowOnboarding.toggle()
-                //NavigationLink(destination: EventsPage())
-                
-            } label: {
-                Text("Next")
+                ZStack{
+                    LinearGradient(
+                        gradient: .init(colors: [Color.orange, Color.red.opacity(0.66)]),
+                        startPoint: .init(x: 0.0, y: 0.0),
+                        endPoint: .init(x: 0.75, y: 0.75)
+                    )
+                    .mask(
+                        RoundedRectangle(cornerRadius: 15)
+                            .frame(width: 120, height: 45, alignment: .center)
+                            .blur(radius: 10)
+                    )
+                    .padding(.top, 20)
+                    Button(action: {
+                        username = selectedItem!
+                        firstAccess = true
+                        shouldShowOnboarding.toggle()
+                        //NavigationLink(destination: EventsPage())
+                    }, label: {
+                        Text("Get Started!")
+                            .font(.custom("Avenir-Heavy", size: 20))
+                            .padding(.top, 10)
+                            .padding(.bottom, 10)
+                            .padding(.leading, 16)
+                            .padding(.trailing, 16)
+                    })
+                    .foregroundColor(.white)
+                    .background(orageGradient)
+                    .clipShape(RoundedRectangle(cornerRadius: 15))
+                    .buttonStyle(PlainButtonStyle())
+                }
+                .frame(height: 100)
             }
-        }
-        .searchable(text: $searchText)
-        .onAppear(){
-            //create for the first time the database of student in CoreData
-            if(firstAccess == false){
-                for i in 0...arrStudentModel.count - 1 {
-                    let newStudent = Student(context: viewContext)
-                    print(arrStudentModel[i])
-                    newStudent.nameSurname = arrStudentModel[i]
-                    newStudent.id = UUID()
-                    
-                    saveStudent()
-
+            .searchable(text: $searchText)
+            .onAppear(){
+                //create for the first time the database of student in CoreData
+                if(firstAccess == false){
+                    for i in 0...arrStudentModel.count - 1 {
+                        let newStudent = Student(context: viewContext)
+                        print(arrStudentModel[i])
+                        newStudent.nameSurname = arrStudentModel[i]
+                        newStudent.id = UUID()
+                        
+                        saveStudent()
+                        
+                    }
                 }
             }
         }
@@ -108,8 +138,8 @@ extension String {
     }
 }
 
-//struct OnBoarding_Previews: PreviewProvider {
-//    static var previews: some View {
-//        OnBoarding().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-//    }
-//}
+struct OnBoarding_Previews: PreviewProvider {
+    static var previews: some View {
+        OnBoarding(shouldShowOnboarding: .constant(false)).environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+    }
+}
