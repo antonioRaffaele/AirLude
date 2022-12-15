@@ -10,19 +10,9 @@ import PhotosUI
 
 struct SheetViewAddEvents: View {
     
-    private var user = UserDefaults.standard.string(forKey: "username")
+     var user = UserDefaults.standard.string(forKey: "username")
     
-    @FetchRequest(
-        sortDescriptors: []
-    ) var result: FetchedResults<Student>
-    
-    var selectedStudent :[Student] {
-        result
-            .filter({ student in
-                //print(doc.hasAProfile?.id ?? Profile(), selectedProfile.id ?? Profile())
-                return student.nameSurname == user
-            })
-    }
+    @StateObject var viewModel: CoreDataViewModel
     
     @Environment(\.dismiss) var dismiss
     @Environment(\.managedObjectContext) private var viewContext
@@ -99,7 +89,7 @@ struct SheetViewAddEvents: View {
                         duration = "\(hour)" + "h " + "\(min)" + "m"
                         print(location)
                         try
-                        addEvent()
+                        addEventLocal(titleIn: self.title, detailsIn: self.details, eventDateIn: self.eventDate, durationIn: self.duration, categoryIn: self.category, locationIn: self.location)
                         dismiss()
                     }catch{
                         //how do I show them the error? alerts are deprecated, Should I set the button unclickable? How?
@@ -125,31 +115,14 @@ struct SheetViewAddEvents: View {
         }
     
     
-    private func addEvent() throws{
-        guard self.title != "" && self.details != "" && self.hour != 0 && self.location != ""  else {throw FormSubmissionError.missingInput}
-        let newEvent = Event(context: viewContext)
+    private func addEventLocal(titleIn: String, detailsIn: String, eventDateIn: Date, durationIn: String, categoryIn: String, locationIn: String) throws{
         
-        newEvent.title = self.title
-        newEvent.details = self.details
-        newEvent.eventDate = self.eventDate
-        newEvent.duration = self.duration
-        newEvent.category = self.category
-        newEvent.location = self.location
-        newEvent.id = UUID()
-        newEvent.hasAStudent = self.selectedStudent.first
-        //newEvent.qrCode =
-
-        saveEvent()
+        guard self.title != "" && self.details != "" && self.hour != 0 && self.location != ""  else {throw FormSubmissionError.missingInput}
+        
+        viewModel.addEvent(titleIn: titleIn, detailsIn: detailsIn, eventDateIn: eventDateIn, durationIn: durationIn, categoryIn: categoryIn, locationIn: locationIn)
     }
     
-    private func saveEvent(){
-        do {
-            try viewContext.save()
-            print("Event saved.")
-        } catch {
-            print(error.localizedDescription)
-        }
-    }
+
     
     func formatDate() -> String {
             let components = Calendar.current.dateComponents([.hour, .minute, .day, .month, .year], from: eventDate)
@@ -172,7 +145,7 @@ struct SheetViewAddEvents: View {
 
 struct SheetViewAddEvents_Previews: PreviewProvider {
     static var previews: some View {
-        SheetViewAddEvents()
+        SheetViewAddEvents(viewModel: CoreDataViewModel())
     }
 }
     

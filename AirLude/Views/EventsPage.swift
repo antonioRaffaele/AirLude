@@ -9,7 +9,7 @@ import SwiftUI
 import CoreData
 
 struct EventsPage: View {
-    @Environment(\.managedObjectContext) private var viewContext
+    @StateObject var viewModel: CoreDataViewModel
     
     @State private var selectedSegment = 0
     
@@ -26,10 +26,44 @@ struct EventsPage: View {
                         Text("Created").tag(1)
                     }.padding()
                         .pickerStyle(.segmented)
+                    
                     if(selectedSegment == 1){
-                        CreatedEventsSection()
+                        if let tmp = viewModel.storedCreatedEvent{
+                            List{
+                                ForEach(tmp) { event in
+                                    Section{
+                                        NavigationLink{
+                                            EventDetails(viewModel: viewModel, selectedEvent: event)
+                                        } label: {
+                                            CardViewEvent(event: event)
+                                        }
+                                        
+                                    }
+                                }
+                                    
+                            }
+                            .listStyle(.insetGrouped)
+                        }else{
+                            Text("ssssss")
+                        }
                     }else{
-                        ShowAllEventsSection()
+                        if let tmp = viewModel.storedAllEvent{
+                            List{
+                                ForEach(tmp) { event in
+                                    Section{
+                                        NavigationLink{
+                                            EventDetails(viewModel: viewModel, selectedEvent: event)
+                                        } label: {
+                                            CardViewEvent(event: event)
+                                        }
+                                        
+                                    }
+                                }
+                            }
+                            .listStyle(.insetGrouped)
+                        }else{
+                            Text("ehehaehahe")
+                        }
                     }
                 }
                 .alert("Perform an action:",isPresented: $showingAlert){
@@ -43,7 +77,7 @@ struct EventsPage: View {
                     } label: {
                         Text("ADD")
                     }.sheet(isPresented: $showingSheet){
-                        SheetViewAddEvents()
+                        SheetViewAddEvents(viewModel: viewModel)
                     }
                 }
                 .background(Color(.systemGroupedBackground))
@@ -58,7 +92,7 @@ struct EventsPage: View {
                             Label("Add Item", systemImage: "plus")
                         }
                         .sheet(isPresented: $showingSheet) {
-                            SheetViewAddEvents()
+                            SheetViewAddEvents(viewModel: viewModel)
                         }
                     }
                 }
@@ -79,6 +113,6 @@ private let itemFormatter: DateFormatter = {
 
 struct EventsPage_Previews: PreviewProvider {
     static var previews: some View {
-        EventsPage().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        EventsPage(viewModel: CoreDataViewModel())
     }
 }

@@ -11,13 +11,13 @@ struct EventDetails: View {
     
     @Environment(\.presentationMode) var presentationMode
     
+    @StateObject var viewModel: CoreDataViewModel
+    
     var selectedEvent: Event
     @State var localIcon: String = ""
     @State var localGradient: LinearGradient = Color.orangeGradient
     
     let indices: IndexSet = [1, 2, 3]
-    
-    @Environment(\.managedObjectContext) private var viewContext
     
     @State private var showingAlert = false
     
@@ -100,7 +100,7 @@ struct EventDetails: View {
             }
             Button {
                 self.presentationMode.wrappedValue.dismiss()
-                deleteItem(offsets: indices)
+                viewModel.deleteEvent(event: selectedEvent)
             } label: {
                 Text("Leave").foregroundColor(.red)
             }
@@ -116,25 +116,6 @@ struct EventDetails: View {
                 }
             }
     }
-    
-    private func deleteItem(offsets: IndexSet) {
-        
-            //offsets.map { event2[$0] }.forEach(viewContext.delete)
-        for event in event2{
-            viewContext.delete(event)
-        }
-            
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
-        
-    }
-    
 }
 
 

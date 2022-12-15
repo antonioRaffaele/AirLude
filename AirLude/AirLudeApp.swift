@@ -9,15 +9,19 @@ import SwiftUI
 
 @main
 struct AirLudeApp: App {
+    @StateObject var viewModel = CoreDataViewModel()
     @AppStorage("loaded") var firstAccess: Bool = false
     let persistenceController = PersistenceController.shared
 
     var body: some Scene {
         WindowGroup {
-                EventsPage()
-                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            EventsPage(viewModel: viewModel)
+//                .onAppear {
+//                viewModel.fetchAllEvent()
+//                viewModel.fetchCreatedEvent()
+            }
         }
     }
-}
+
 
 

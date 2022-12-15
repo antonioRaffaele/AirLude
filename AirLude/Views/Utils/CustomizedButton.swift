@@ -14,7 +14,7 @@ struct CustomizedButton: View {
     var body: some View {
         ZStack{
             LinearGradient(
-                gradient: .init(colors: [Color.orange, Color.red.opacity(0.66)]),
+                gradient: .init(colors: [Color.gray, Color.black.opacity(0.66)]),
                 startPoint: .init(x: 0.0, y: 0.0),
                 endPoint: .init(x: 0.75, y: 0.75)
             )
@@ -37,7 +37,7 @@ struct CustomizedButton: View {
             .foregroundColor(.white)
             .background(
                 LinearGradient(
-                    gradient: .init(colors: [Color.orange, Color.red.opacity(0.75)]),
+                    gradient: .init(colors: [Color.gray, Color.black.opacity(0.75)]),
                     startPoint: .init(x: -0.33, y: -0.33),
                     endPoint: .init(x: 0.66, y: 0.66)
                 ))
