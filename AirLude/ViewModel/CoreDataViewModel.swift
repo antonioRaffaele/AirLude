@@ -100,6 +100,15 @@ class CoreDataViewModel: ObservableObject{
         fetchAllEvent()
     }
     
+    func addStudent(nameSurnameIn: String){
+        let newStudent = Student(context: container.viewContext)
+        
+        newStudent.nameSurname = nameSurnameIn
+        newStudent.id = UUID()
+        
+        saveContext()
+    }
+    
     func saveContext(){
         do {
             try container.viewContext.save()

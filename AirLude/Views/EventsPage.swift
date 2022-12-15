@@ -66,7 +66,7 @@ struct EventsPage: View {
                         }
                     }
                 }
-                .alert("Perform an action:",isPresented: $showingAlert){
+                .alert("How to you want to add a new event?🤓",isPresented: $showingAlert){
                     Button {
                         print("")
                     } label: {
@@ -77,7 +77,7 @@ struct EventsPage: View {
                     } label: {
                         Text("ADD")
                     }.sheet(isPresented: $showingSheet){
-                        SheetViewAddEvents(viewModel: viewModel)
+                        EventAddSheetView(viewModel: viewModel)
                     }
                 }
                 .background(Color(.systemGroupedBackground))
@@ -92,12 +92,12 @@ struct EventsPage: View {
                             Label("Add Item", systemImage: "plus")
                         }
                         .sheet(isPresented: $showingSheet) {
-                            SheetViewAddEvents(viewModel: viewModel)
+                            EventAddSheetView(viewModel: viewModel)
                         }
                     }
                 }
                 .fullScreenCover(isPresented: $shouldShowOnboarding, content: {
-                    OnBoarding(shouldShowOnboarding: $shouldShowOnboarding)
+                    OnBoarding(viewModel: viewModel, shouldShowOnboarding: $shouldShowOnboarding)
                 })
             }
     }

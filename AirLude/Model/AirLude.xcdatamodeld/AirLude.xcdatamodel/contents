@@ -15,7 +15,6 @@
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
     <entity name="Student" representedClassName="Student" syncable="YES">
-        <attribute name="email" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="nameSurname" optional="YES" attributeType="String"/>
         <relationship name="hasEvents" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Event" inverseName="hasAStudent" inverseEntity="Event"/>

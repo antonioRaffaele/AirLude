@@ -17,23 +17,9 @@ struct EventDetails: View {
     @State var localIcon: String = ""
     @State var localGradient: LinearGradient = Color.orangeGradient
     
-    let indices: IndexSet = [1, 2, 3]
     
     @State private var showingAlert = false
-    
-    @FetchRequest(
-        sortDescriptors: []
-    ) var event: FetchedResults<Event>
-    
-    //serve per creare un array di eventi creati dallo user
-    var event2 :[Event] {
-        event
-            .filter({ event in
-                //print(doc.hasAProfile?.id ?? Profile(), selectedProfile.id ?? Profile())
-                return event.id == selectedEvent.id
-            })
-    }
-    
+    @State var presentSheet = false
     
     var body: some View {
         
@@ -74,8 +60,48 @@ struct EventDetails: View {
             
             Spacer()
             
-            CustomizedButton(buttonText: "Show QrCode")
+            ZStack{
+                localGradient
+                .mask(
+                    RoundedRectangle(cornerRadius: 15)
+                        .frame(width: 120, height: 45, alignment: .center)
+                        .blur(radius: 10)
+                )
+                .padding(.top, 20)
+                Button(action: {
+                    presentSheet = true
+                }, label: {
+                    Text("Show QR Code")
+                        .font(.custom("Avenir-Heavy", size: 20))
+                        .padding(.top, 10)
+                        .padding(.bottom, 10)
+                        .padding(.leading, 16)
+                        .padding(.trailing, 16)
+                })
+                .foregroundColor(.white)
+                .background(localGradient)
+                .clipShape(RoundedRectangle(cornerRadius: 15))
+                .buttonStyle(PlainButtonStyle())
+            }
+            .frame(height: 100)
         }
+        .sheet(isPresented: $presentSheet) {
+            VStack(alignment: .center){
+                Text("That's your QR Code!")
+                    
+                Text("Share it with others!")
+                    
+                Image("qrcode_github")
+                    .resizable()
+                    .frame(width: 150, height: 150)
+                    .font(.title2)
+                    .foregroundColor(.primary)
+                    .padding(10)
+                    .cornerRadius(16)
+                Label("Download it here", systemImage: "square.and.arrow.down").foregroundColor(Color.cyan)
+                    
+            }.presentationDetents([.medium, .large])
+                }
         .onAppear(){
             if(selectedEvent.category == "Tournament"){
                 localIcon  = "flag.checkered.2.crossed"
@@ -92,7 +118,7 @@ struct EventDetails: View {
             }
                      
         }
-        .alert("Perform an action:",isPresented: $showingAlert){
+        .alert("Are you sure?😢",isPresented: $showingAlert){
             Button {
                 print("ok")
             } label: {
@@ -102,7 +128,7 @@ struct EventDetails: View {
                 self.presentationMode.wrappedValue.dismiss()
                 viewModel.deleteEvent(event: selectedEvent)
             } label: {
-                Text("Leave").foregroundColor(.red)
+                Text("Leave").foregroundColor(.red).bold()
             }
         }
         .navigationBarTitleDisplayMode(.inline)
