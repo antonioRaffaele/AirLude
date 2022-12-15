@@ -80,7 +80,7 @@ struct SheetViewAddEvents: View {
                         
                     Section(){
                         Picker("Category", selection: $category) {
-                            ForEach(["Tournament","Course"], id: \.self) {
+                            ForEach(["Tournament","Course","Study Session","Public Speaking"], id: \.self) {
                                 Text("\($0) ")
                             }
                         }

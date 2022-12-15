@@ -12,6 +12,8 @@ struct EventDetails: View {
     @Environment(\.presentationMode) var presentationMode
     
     var selectedEvent: Event
+    @State var localIcon: String = ""
+    @State var localGradient: LinearGradient = Color.orangeGradient
     
     let indices: IndexSet = [1, 2, 3]
     
@@ -38,17 +40,17 @@ struct EventDetails: View {
         VStack(spacing: 10){
             Rectangle()
                 .fill(localGradient)
-                .frame(height: 150)
+                .frame(height: 120)
             
             HStack{
                 Image(systemName: localIcon)
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(width: 25.0,height: 25.0)
-                                    .cornerRadius(25)
-                                    .padding(6)
-                                    .background(localGradient)
-                                    .clipShape(Circle())
+                    .font(.title2)
+                    .foregroundColor(.primary)
+                    .padding(10)
+                    .background {
+                        Circle().fill(localGradient)
+
+                    }
                 Label{
                     Text(selectedEvent.title ?? "").font(.largeTitle).bold()
                 } icon:{
@@ -77,11 +79,18 @@ struct EventDetails: View {
         .onAppear(){
             if(selectedEvent.category == "Tournament"){
                 localIcon  = "flag.checkered.2.crossed"
-                //localGradient = orangeGradient
+                //localGradient = Color.orangeGradient
             }else if(selectedEvent.category == "Course"){
                 localIcon = "party.popper"
-                localGradient = blueGradient
+                localGradient = Color.blueGradient
+            }else if(selectedEvent.category == "Study Session"){
+                localIcon = "books.vertical"
+                localGradient = Color.greenGradient
+            }else if(selectedEvent.category == "Public Speaking"){
+                localIcon = "speaker.wave.2"
+                localGradient = Color.purpleGradient
             }
+                     
         }
         .alert("Perform an action:",isPresented: $showingAlert){
             Button {
@@ -107,18 +116,6 @@ struct EventDetails: View {
                 }
             }
     }
-    let blueGradient = LinearGradient(
-        gradient: .init(colors: [Color.cyan, Color.blue.opacity(0.75)]),
-        startPoint: .init(x: -0.33, y: -0.33),
-        endPoint: .init(x: 0.66, y: 0.66)
-    )
-    
-    @State var localIcon: String = ""
-    @State var localGradient: LinearGradient = LinearGradient(
-        gradient: .init(colors: [Color.orange, Color.red.opacity(0.75)]),
-        startPoint: .init(x: -0.33, y: -0.33),
-        endPoint: .init(x: 0.66, y: 0.66)
-    )
     
     private func deleteItem(offsets: IndexSet) {
         

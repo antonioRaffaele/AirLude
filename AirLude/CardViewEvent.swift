@@ -11,19 +11,8 @@ struct CardViewEvent: View {
     
     var event: Event
     
-    
-    let blueGradient = LinearGradient(
-        gradient: .init(colors: [Color.cyan, Color.blue.opacity(0.75)]),
-        startPoint: .init(x: -0.33, y: -0.33),
-        endPoint: .init(x: 0.66, y: 0.66)
-    )
-    
     @State var localIcon: String = ""
-    @State var localGradient: LinearGradient = LinearGradient(
-        gradient: .init(colors: [Color.orange, Color.red.opacity(0.75)]),
-        startPoint: .init(x: -0.33, y: -0.33),
-        endPoint: .init(x: 0.66, y: 0.66)
-    )
+    @State var localGradient: LinearGradient = Color.orangeGradient
     
     var body: some View {
         HStack{
@@ -31,13 +20,13 @@ struct CardViewEvent: View {
             VStack{
                 
                 Image(systemName: localIcon)
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(width: 25.0,height: 25.0)
-                                    .cornerRadius(25)
-                                    .padding(6)
-                                    .background(localGradient)
-                                    .clipShape(Circle())
+                    .font(.title2)
+                    .foregroundColor(.primary)
+                    .padding(10)
+                    .background {
+                        Circle().fill(localGradient)
+
+                    }
                                 Spacer()
             }
             VStack(alignment: .leading){
@@ -69,7 +58,13 @@ struct CardViewEvent: View {
                     //localGradient = orangeGradient
                 }else if(event.category == "Course"){
                     localIcon = "party.popper"
-                    localGradient = blueGradient
+                    localGradient = Color.blueGradient
+                }else if(event.category == "Study Session"){
+                    localIcon = "books.vertical"
+                    localGradient = Color.greenGradient
+                }else if(event.category == "Public Speaking"){
+                    localIcon = "speaker.wave.2"
+                    localGradient = Color.purpleGradient
                 }
             }
     }
