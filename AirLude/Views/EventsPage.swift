@@ -9,7 +9,8 @@ import SwiftUI
 import CoreData
 
 struct EventsPage: View {
-    @StateObject var viewModel: CoreDataViewModel
+    @ObservedObject var viewModel: CoreDataViewModel
+    //@EnvironmentObject var viewModel: CoreDataViewModel
     
     @State private var selectedSegment = 0
     

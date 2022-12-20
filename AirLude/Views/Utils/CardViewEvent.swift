@@ -34,7 +34,7 @@ struct CardViewEvent: View {
                 Text(event.title ?? "")
                     .bold().font(.system(size: 20))
                 
-                Text("Date: \(event.eventDate!, formatter: itemFormatter)").bold()
+                Text("Date: \(event.eventDate ?? Date(), formatter: itemFormatter)").bold()
                     .foregroundColor(.white)
                     .padding(6)
                     .padding(.trailing,16)

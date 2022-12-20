@@ -91,7 +91,8 @@ struct EventDetails: View {
                     
                 Text("Share it with others!")
                     
-                Image("qrcode_github")
+                let qrCode = Image(uiImage: UIImage(data: selectedEvent.qrCode ?? Data()) ?? UIImage())
+                qrCode
                     .resizable()
                     .frame(width: 150, height: 150)
                     .font(.title2)

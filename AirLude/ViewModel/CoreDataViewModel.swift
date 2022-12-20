@@ -73,7 +73,23 @@ class CoreDataViewModel: ObservableObject{
         fetchAllEvent()
     }
     
-    func addEvent(titleIn: String, detailsIn: String, eventDateIn: Date, durationIn: String, categoryIn: String, locationIn: String){
+    func getStudentJson() -> StudentJSON{
+        let request = NSFetchRequest<Student>(entityName: "Student")
+        //        request.predicate = NSPredicate(format: "hasAStudent?.nameSurname == %@",user!)
+        do{
+            storedStudent = try container.viewContext.fetch(request).filter({ student in
+                student.nameSurname == user
+            })
+            
+        }catch let error{
+            print("ERROR FETCHING! \(error)")
+        }
+        
+        let student: StudentJSON = StudentJSON(id: storedStudent.first?.id ?? UUID(), nameSurname: user!)
+        return student
+    }
+    
+    func addEvent(titleIn: String, detailsIn: String, eventDateIn: Date, durationIn: String, categoryIn: String, locationIn: String, idIn: UUID, qrCodeIn: Data){
         
         let request = NSFetchRequest<Student>(entityName: "Student")
         //        request.predicate = NSPredicate(format: "hasAStudent?.nameSurname == %@",user!)
@@ -81,20 +97,24 @@ class CoreDataViewModel: ObservableObject{
             storedStudent = try container.viewContext.fetch(request).filter({ student in
                 student.nameSurname == user
             })
+            
+            let newEvent = Event(context: container.viewContext)
+            
+            newEvent.title = titleIn
+            newEvent.details = detailsIn
+            newEvent.eventDate = eventDateIn
+            newEvent.duration = durationIn
+            newEvent.category = categoryIn
+            newEvent.location = locationIn
+            newEvent.id = idIn
+            newEvent.qrCode = qrCodeIn
+            
+            print(storedStudent.first?.nameSurname ?? "")
+            newEvent.hasAStudent = storedStudent.first
+            
         }catch let error{
             print("ERROR FETCHING! \(error)")
         }
-        
-        let newEvent = Event(context: container.viewContext)
-        
-        newEvent.title = titleIn
-        newEvent.details = detailsIn
-        newEvent.eventDate = eventDateIn
-        newEvent.duration = durationIn
-        newEvent.category = categoryIn
-        newEvent.location = locationIn
-        newEvent.id = UUID()
-        newEvent.hasAStudent = storedStudent.first
         
         saveContext()
         fetchAllEvent()

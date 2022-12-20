@@ -16,6 +16,7 @@ struct AirLudeApp: App {
     var body: some Scene {
         WindowGroup {
             EventsPage(viewModel: viewModel)
+//                .environmentObject(viewModel)
 //                .onAppear {
 //                viewModel.fetchAllEvent()
 //                viewModel.fetchCreatedEvent()
