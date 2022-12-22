@@ -7,6 +7,7 @@
 
 import SwiftUI
 import CoreData
+import CodeScanner
 
 struct EventsPage: View {
     @ObservedObject var viewModel: CoreDataViewModel
@@ -16,9 +17,10 @@ struct EventsPage: View {
     
     @AppStorage("shouldShowOnboarding") var shouldShowOnboarding: Bool = true
     @State private var showingSheet = false
+
+    @State private var isShowingScanner = false
     
-    @State private var showingAlert = false
-    
+
     var body: some View {
             NavigationView{
                 VStack{
@@ -67,33 +69,27 @@ struct EventsPage: View {
                         }
                     }
                 }
-                .alert("How to you want to add a new event?🤓",isPresented: $showingAlert){
-                    Button {
-                        print("")
-                    } label: {
-                        Text("SCAN")
-                    }
-                    Button {
-                        showingSheet.toggle()
-                    } label: {
-                        Text("ADD")
-                    }.sheet(isPresented: $showingSheet){
-                        EventAddSheetView(viewModel: viewModel)
-                    }
-                }
                 .background(Color(.systemGroupedBackground))
                 .navigationTitle("Events")
                 .toolbar{
                     ToolbarItem{
                         Button{
-                            showingAlert.toggle()
-                            //showingSheet.toggle()
-                            
+                            showingSheet.toggle()
                         }label: {
                             Label("Add Item", systemImage: "plus")
                         }
                         .sheet(isPresented: $showingSheet) {
                             EventAddSheetView(viewModel: viewModel)
+                        }
+                    }
+                    ToolbarItem{
+                        Button {
+                            isShowingScanner = true
+                        } label: {
+                            Label("Scan", systemImage: "qrcode.viewfinder")
+                        }
+                        .sheet(isPresented: $isShowingScanner) {
+                            CodeScannerView(codeTypes: [.qr], completion: handleScan)
                         }
                     }
                 }
@@ -103,6 +99,50 @@ struct EventsPage: View {
             }
     }
     
+    func handleScan(result: Result<ScanResult, ScanError>) {
+        isShowingScanner = false
+        switch result {
+        case .success(let result):
+            
+            print(result.string)
+            let data = result.string.data(using: .utf8)!
+            do {
+                let pastData: EventJSON = try JSONDecoder().decode(EventJSON.self,from: data)
+                print(pastData)
+                
+                //generami il qrCode
+                let qrCode = generateQRCode(from: result.string) ?? UIImage(named: "qrcode_github")!
+                //per poterlo salvare, convertilo
+                let qrCodePng = qrCode.pngData()!
+                
+                viewModel.addEvent(titleIn: pastData.title, detailsIn: pastData.details, eventDateIn: pastData.eventDate, durationIn: pastData.duration, categoryIn: pastData.category, locationIn: pastData.location, idIn: pastData.id, qrCodeIn: qrCodePng, userIn: pastData.student.nameSurname)
+//                NavigationLink{
+//                    EventPartecipation(viewModel: viewModel, scannedEvent: pastData)
+//                } label: {
+//                    Text("ahha")
+//                }
+            } catch{
+                print("Error")
+            }
+        case .failure(let error):
+            print("Scanning failed: \(error.localizedDescription)")
+        }
+    }
+    
+    func generateQRCode(from string: String) -> UIImage? {
+        let data = string.data(using: String.Encoding.ascii)
+
+        if let filter = CIFilter(name: "CIQRCodeGenerator") {
+            filter.setValue(data, forKey: "inputMessage")
+            let transform = CGAffineTransform(scaleX: 3, y: 3)
+
+            if let output = filter.outputImage?.transformed(by: transform) {
+                return UIImage(ciImage: output)
+            }
+        }
+
+        return nil
+    }
 }
 
 private let itemFormatter: DateFormatter = {

@@ -18,12 +18,16 @@
 		3B2EAAC92947378500F28D25 /* OnBoarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2EAAC82947378500F28D25 /* OnBoarding.swift */; };
 		3B7728542951B352008CAB3A /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7728532951B352008CAB3A /* Event.swift */; };
 		3B7728562951B3B6008CAB3A /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7728552951B3B6008CAB3A /* Student.swift */; };
+		3B83610E2953254A0017B1D0 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 3B83610D2953254A0017B1D0 /* CodeScanner */; };
+		3B836114295383C30017B1D0 /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B836113295383C30017B1D0 /* ImageSaver.swift */; };
+		3B836119295470A50017B1D0 /* EventPartecipation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B836118295470A50017B1D0 /* EventPartecipation.swift */; };
+		3B83611B2954BCFF0017B1D0 /* EventPartecipationInfos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B83611A2954BCFF0017B1D0 /* EventPartecipationInfos.swift */; };
 		3B8DFAD129435F5A009E3919 /* EventsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8DFAD029435F5A009E3919 /* EventsPage.swift */; };
 		3B8DFAD6294365E3009E3919 /* Student+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8DFAD2294365E3009E3919 /* Student+CoreDataClass.swift */; };
 		3B8DFAD7294365E3009E3919 /* Student+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8DFAD3294365E3009E3919 /* Student+CoreDataProperties.swift */; };
 		3B8DFAD8294365E3009E3919 /* Event+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8DFAD4294365E3009E3919 /* Event+CoreDataClass.swift */; };
 		3B8DFAD9294365E3009E3919 /* Event+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8DFAD5294365E3009E3919 /* Event+CoreDataProperties.swift */; };
-		3B8E525829486F0600CFC297 /* EventInfos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8E525729486F0600CFC297 /* EventInfos.swift */; };
+		3B8E525829486F0600CFC297 /* EventDetailsInfos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8E525729486F0600CFC297 /* EventDetailsInfos.swift */; };
 		3B8E525A2948708300CFC297 /* CustomizedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8E52592948708300CFC297 /* CustomizedButton.swift */; };
 		3B8E52602948735600CFC297 /* CardViewEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8E525F2948735600CFC297 /* CardViewEvent.swift */; };
 		3BBED3582944D27C009FD0C6 /* EventDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBED3572944D27C009FD0C6 /* EventDetails.swift */; };
@@ -43,12 +47,16 @@
 		3B2EAAC82947378500F28D25 /* OnBoarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoarding.swift; sourceTree = "<group>"; };
 		3B7728532951B352008CAB3A /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		3B7728552951B3B6008CAB3A /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
+		3B836113295383C30017B1D0 /* ImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
+		3B836117295450780017B1D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		3B836118295470A50017B1D0 /* EventPartecipation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventPartecipation.swift; sourceTree = "<group>"; };
+		3B83611A2954BCFF0017B1D0 /* EventPartecipationInfos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventPartecipationInfos.swift; sourceTree = "<group>"; };
 		3B8DFAD029435F5A009E3919 /* EventsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsPage.swift; sourceTree = "<group>"; };
 		3B8DFAD2294365E3009E3919 /* Student+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Student+CoreDataClass.swift"; sourceTree = "<group>"; };
 		3B8DFAD3294365E3009E3919 /* Student+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Student+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		3B8DFAD4294365E3009E3919 /* Event+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Event+CoreDataClass.swift"; sourceTree = "<group>"; };
 		3B8DFAD5294365E3009E3919 /* Event+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Event+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		3B8E525729486F0600CFC297 /* EventInfos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInfos.swift; sourceTree = "<group>"; };
+		3B8E525729486F0600CFC297 /* EventDetailsInfos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsInfos.swift; sourceTree = "<group>"; };
 		3B8E52592948708300CFC297 /* CustomizedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizedButton.swift; sourceTree = "<group>"; };
 		3B8E525F2948735600CFC297 /* CardViewEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewEvent.swift; sourceTree = "<group>"; };
 		3BBED3572944D27C009FD0C6 /* EventDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetails.swift; sourceTree = "<group>"; };
@@ -60,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B83610E2953254A0017B1D0 /* CodeScanner in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +94,7 @@
 		3B01755E2940A17700ECB6DE /* AirLude */ = {
 			isa = PBXGroup;
 			children = (
+				3B836117295450780017B1D0 /* Info.plist */,
 				3B2593B7294B3FD0001FDC0E /* Views */,
 				3B2593B6294B3FBA001FDC0E /* Model */,
 				3B2593B9294B4052001FDC0E /* ViewModel */,
@@ -120,10 +130,11 @@
 			children = (
 				3B2593B8294B4035001FDC0E /* Utils */,
 				3BBED3572944D27C009FD0C6 /* EventDetails.swift */,
-				3B8E525729486F0600CFC297 /* EventInfos.swift */,
+				3B8E525729486F0600CFC297 /* EventDetailsInfos.swift */,
+				3B836118295470A50017B1D0 /* EventPartecipation.swift */,
+				3B83611A2954BCFF0017B1D0 /* EventPartecipationInfos.swift */,
 				3B8DFAD029435F5A009E3919 /* EventsPage.swift */,
 				3B11E446294227A0007CD5A3 /* EventAddSheetView.swift */,
-				3B2593B2294B1749001FDC0E /* Color+Gradient.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -135,6 +146,8 @@
 				3B8E52592948708300CFC297 /* CustomizedButton.swift */,
 				3B2EAAC82947378500F28D25 /* OnBoarding.swift */,
 				3BBFA83D29477B1B00E8998F /* SelectionRow.swift */,
+				3B2593B2294B1749001FDC0E /* Color+Gradient.swift */,
+				3B836113295383C30017B1D0 /* ImageSaver.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -174,6 +187,9 @@
 			dependencies = (
 			);
 			name = AirLude;
+			packageProductDependencies = (
+				3B83610D2953254A0017B1D0 /* CodeScanner */,
+			);
 			productName = AirLude;
 			productReference = 3B01755C2940A17700ECB6DE /* AirLude.app */;
 			productType = "com.apple.product-type.application";
@@ -202,6 +218,9 @@
 				Base,
 			);
 			mainGroup = 3B0175532940A17700ECB6DE;
+			packageReferences = (
+				3B83610C2953254A0017B1D0 /* XCRemoteSwiftPackageReference "CodeScanner" */,
+			);
 			productRefGroup = 3B01755D2940A17700ECB6DE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -232,9 +251,12 @@
 				3BBFA83E29477B1B00E8998F /* SelectionRow.swift in Sources */,
 				3B8DFAD9294365E3009E3919 /* Event+CoreDataProperties.swift in Sources */,
 				3B2593B5294B1E52001FDC0E /* CoreDataViewModel.swift in Sources */,
+				3B83611B2954BCFF0017B1D0 /* EventPartecipationInfos.swift in Sources */,
 				3B8E52602948735600CFC297 /* CardViewEvent.swift in Sources */,
 				3B0175692940A17800ECB6DE /* Persistence.swift in Sources */,
 				3B8DFAD7294365E3009E3919 /* Student+CoreDataProperties.swift in Sources */,
+				3B836119295470A50017B1D0 /* EventPartecipation.swift in Sources */,
+				3B836114295383C30017B1D0 /* ImageSaver.swift in Sources */,
 				3B01756C2940A17800ECB6DE /* AirLude.xcdatamodeld in Sources */,
 				3B8DFAD8294365E3009E3919 /* Event+CoreDataClass.swift in Sources */,
 				3B8DFAD6294365E3009E3919 /* Student+CoreDataClass.swift in Sources */,
@@ -242,7 +264,7 @@
 				3B8E525A2948708300CFC297 /* CustomizedButton.swift in Sources */,
 				3BBED3582944D27C009FD0C6 /* EventDetails.swift in Sources */,
 				3B0175602940A17700ECB6DE /* AirLudeApp.swift in Sources */,
-				3B8E525829486F0600CFC297 /* EventInfos.swift in Sources */,
+				3B8E525829486F0600CFC297 /* EventDetailsInfos.swift in Sources */,
 				3B8DFAD129435F5A009E3919 /* EventsPage.swift in Sources */,
 				3B11E447294227A0007CD5A3 /* EventAddSheetView.swift in Sources */,
 				3B7728562951B3B6008CAB3A /* Student.swift in Sources */,
@@ -378,6 +400,12 @@
 				DEVELOPMENT_TEAM = Y5P2U42H49;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AirLude/Info.plist;
+				INFOPLIST_KEY_NSAppleMusicUsageDescription = "We need to access Media Library";
+				INFOPLIST_KEY_NSCameraUsageDescription = "We need to scan QrCode";
+				INFOPLIST_KEY_NSDocumentsFolderUsageDescription = "We need to access Document Folder";
+				INFOPLIST_KEY_NSFileProviderDomainUsageDescription = "We need to access to a File Provide Domain";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "AirLude's QrCode";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -408,6 +436,12 @@
 				DEVELOPMENT_TEAM = Y5P2U42H49;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AirLude/Info.plist;
+				INFOPLIST_KEY_NSAppleMusicUsageDescription = "We need to access Media Library";
+				INFOPLIST_KEY_NSCameraUsageDescription = "We need to scan QrCode";
+				INFOPLIST_KEY_NSDocumentsFolderUsageDescription = "We need to access Document Folder";
+				INFOPLIST_KEY_NSFileProviderDomainUsageDescription = "We need to access to a File Provide Domain";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "AirLude's QrCode";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -449,6 +483,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3B83610C2953254A0017B1D0 /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/twostraws/CodeScanner";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3B83610D2953254A0017B1D0 /* CodeScanner */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3B83610C2953254A0017B1D0 /* XCRemoteSwiftPackageReference "CodeScanner" */;
+			productName = CodeScanner;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		3B01756A2940A17800ECB6DE /* AirLude.xcdatamodeld */ = {

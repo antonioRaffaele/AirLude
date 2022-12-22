@@ -144,11 +144,11 @@ struct EventAddSheetView: View {
             let eventString = try
             convertToJsonString(titleIn: titleIn, detailsIn: detailsIn, eventDateIn: eventDateIn, durationIn: durationIn, categoryIn: categoryIn, locationIn: locationIn, idIn: eventId)
             //generami il qrCode
-            qrCode = generateQRCode(from: eventString) ?? UIImage(named: "qrcode_github")!
+            qrCode = generateQRCode(from: eventString) ?? UIImage(named: "micioMao")!
             //per poterlo salvare, convertilo
             let qrCodePng = qrCode.pngData()!
             
-            viewModel.addEvent(titleIn: titleIn, detailsIn: detailsIn, eventDateIn: eventDateIn, durationIn: durationIn, categoryIn: categoryIn, locationIn: locationIn,idIn: eventId, qrCodeIn: qrCodePng)
+            viewModel.addEvent(titleIn: titleIn, detailsIn: detailsIn, eventDateIn: eventDateIn, durationIn: durationIn, categoryIn: categoryIn, locationIn: locationIn,idIn: eventId, qrCodeIn: qrCodePng, userIn: user!)
         }catch{
             print("Error")
         }

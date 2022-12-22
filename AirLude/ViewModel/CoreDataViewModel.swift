@@ -85,17 +85,17 @@ class CoreDataViewModel: ObservableObject{
             print("ERROR FETCHING! \(error)")
         }
         
-        let student: StudentJSON = StudentJSON(id: storedStudent.first?.id ?? UUID(), nameSurname: user!)
+        let student: StudentJSON = StudentJSON(id: storedStudent.first?.id ?? UUID(), nameSurname: user ?? "user default")
         return student
     }
     
-    func addEvent(titleIn: String, detailsIn: String, eventDateIn: Date, durationIn: String, categoryIn: String, locationIn: String, idIn: UUID, qrCodeIn: Data){
+    func addEvent(titleIn: String, detailsIn: String, eventDateIn: Date, durationIn: String, categoryIn: String, locationIn: String, idIn: UUID, qrCodeIn: Data, userIn: String){
         
         let request = NSFetchRequest<Student>(entityName: "Student")
         //        request.predicate = NSPredicate(format: "hasAStudent?.nameSurname == %@",user!)
         do{
             storedStudent = try container.viewContext.fetch(request).filter({ student in
-                student.nameSurname == user
+                student.nameSurname == userIn
             })
             
             let newEvent = Event(context: container.viewContext)

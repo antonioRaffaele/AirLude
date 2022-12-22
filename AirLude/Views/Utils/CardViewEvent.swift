@@ -42,7 +42,7 @@ struct CardViewEvent: View {
                     .cornerRadius(16)
                     .font(.system(size: 14))
                 
-                Text("\(event.location!)").bold()
+                Text("\(event.location ?? "default location")").bold()
                     .foregroundColor(.white)
                     .padding(6)
                     .padding(.trailing,16)

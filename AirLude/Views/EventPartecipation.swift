@@ -1,19 +1,19 @@
 //
-//  EventDetails.swift
+//  EventPartecipation.swift
 //  AirLude
 //
-//  Created by Valerio Mosca on 10/12/22.
+//  Created by Valerio Mosca on 22/12/22.
 //
 
 import SwiftUI
 
-struct EventDetails: View {
+struct EventPartecipation: View {
     
     @Environment(\.presentationMode) var presentationMode
     
     @StateObject var viewModel: CoreDataViewModel
     
-    var selectedEvent: Event
+    var scannedEvent: EventJSON
     @State var localIcon: String = ""
     @State var localGradient: LinearGradient = Color.orangeGradient
     
@@ -38,25 +38,14 @@ struct EventDetails: View {
 
                     }
                 Label{
-                    Text(selectedEvent.title ?? "").font(.largeTitle).bold()
+                    Text(scannedEvent.title).font(.largeTitle).bold()
                 } icon:{
                     //Image("")
                 }
                 Spacer()
             }.padding(16)
             
-            EventDetailsInfos(selectedEvent: selectedEvent)
-            
-            VStack(spacing: -15){
-                Text("Description").font(.title)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding()
-                
-                Text(selectedEvent.details ?? "")
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding()
-                    .lineLimit(1)
-            }
+            EventPartecipationInfos(scannedEvent: scannedEvent)
             
             Spacer()
             
@@ -85,48 +74,17 @@ struct EventDetails: View {
             }
             .frame(height: 100)
         }
-        .sheet(isPresented: $presentSheet) {
-            VStack(alignment: .center){
-                Text("That's your QR Code!")
-                    
-                Text("Share it with others!")
-                    
-                let qrCode = Image(uiImage: UIImage(data: selectedEvent.qrCode ?? Data()) ?? UIImage())
-                qrCode
-                    .resizable()
-                    .frame(width: 150, height: 150)
-                    .font(.title2)
-                    .foregroundColor(.primary)
-                    .padding(10)
-                    .cornerRadius(16)
-                
-                Button {
-                    let imageSaver = ImageSaver()
-                    
-                    if let data = selectedEvent.qrCode,
-                       let uiImage: UIImage = UIImage(data: data) {
-                        imageSaver.writeToPhotoAlbum(image: uiImage)
-                    }
-                } label: {
-                    (Text("Download it here") + Text(Image(systemName: "square.and.arrow.down")))
-                        .foregroundColor(.blue)
-                }
-
-                //Label("Download it here", systemImage: "square.and.arrow.down").foregroundColor(Color.cyan)
-                    
-            }.presentationDetents([.medium, .large])
-                }
         .onAppear(){
-            if(selectedEvent.category == "Tournament"){
+            if(scannedEvent.category == "Tournament"){
                 localIcon  = "flag.checkered.2.crossed"
                 //localGradient = Color.orangeGradient
-            }else if(selectedEvent.category == "Course"){
+            }else if(scannedEvent.category == "Course"){
                 localIcon = "party.popper"
                 localGradient = Color.blueGradient
-            }else if(selectedEvent.category == "Study Session"){
+            }else if(scannedEvent.category == "Study Session"){
                 localIcon = "books.vertical"
                 localGradient = Color.greenGradient
-            }else if(selectedEvent.category == "Public Speaking"){
+            }else if(scannedEvent.category == "Public Speaking"){
                 localIcon = "speaker.wave.2"
                 localGradient = Color.purpleGradient
             }
@@ -140,7 +98,6 @@ struct EventDetails: View {
             }
             Button {
                 self.presentationMode.wrappedValue.dismiss()
-                viewModel.deleteEvent(event: selectedEvent)
             } label: {
                 Text("Leave").foregroundColor(.red).bold()
             }
@@ -158,9 +115,9 @@ struct EventDetails: View {
     }
 }
 
-
 //struct EventDetails_Previews: PreviewProvider {
 //    static var previews: some View {
 //        EventDetails()
 //    }
 //}
+
