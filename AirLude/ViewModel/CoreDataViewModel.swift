@@ -38,6 +38,9 @@ class CoreDataViewModel: ObservableObject{
     
     func fetchAllEvent(){
         let request = NSFetchRequest<Event>(entityName: "Event")
+        let sectionSortDescriptor = NSSortDescriptor(key: "eventDate", ascending: true)
+        let sortDescriptors = [sectionSortDescriptor]
+        request.sortDescriptors = sortDescriptors
         do{
             storedAllEvent = try container.viewContext.fetch(request)
         }catch let error{
@@ -58,6 +61,9 @@ class CoreDataViewModel: ObservableObject{
     func fetchCreatedEvent(){
         let request = NSFetchRequest<Event>(entityName: "Event")
         //        request.predicate = NSPredicate(format: "hasAStudent?.nameSurname == %@",user!)
+        let sectionSortDescriptor = NSSortDescriptor(key: "eventDate", ascending: true)
+        let sortDescriptors = [sectionSortDescriptor]
+        request.sortDescriptors = sortDescriptors
         do{
             storedCreatedEvent = try container.viewContext.fetch(request).filter({ event in
                 event.hasAStudent?.nameSurname == user
@@ -117,7 +123,7 @@ class CoreDataViewModel: ObservableObject{
         }
         
         saveContext()
-        fetchAllEvent()
+        fetchEventsArray()
     }
     
     func addStudent(nameSurnameIn: String){

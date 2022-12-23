@@ -19,6 +19,7 @@ struct EventDetails: View {
     
     
     @State private var showingAlert = false
+    @State private var showingAlert2 = false
     @State var presentSheet = false
     
     var body: some View {
@@ -35,7 +36,7 @@ struct EventDetails: View {
                     .padding(10)
                     .background {
                         Circle().fill(localGradient)
-
+                        
                     }
                 Label{
                     Text(selectedEvent.title ?? "").font(.largeTitle).bold()
@@ -62,12 +63,12 @@ struct EventDetails: View {
             
             ZStack{
                 localGradient
-                .mask(
-                    RoundedRectangle(cornerRadius: 15)
-                        .frame(width: 120, height: 45, alignment: .center)
-                        .blur(radius: 10)
-                )
-                .padding(.top, 20)
+                    .mask(
+                        RoundedRectangle(cornerRadius: 15)
+                            .frame(width: 120, height: 45, alignment: .center)
+                            .blur(radius: 10)
+                    )
+                    .padding(.top, 20)
                 Button(action: {
                     presentSheet = true
                 }, label: {
@@ -88,9 +89,9 @@ struct EventDetails: View {
         .sheet(isPresented: $presentSheet) {
             VStack(alignment: .center){
                 Text("That's your QR Code!")
-                    
+                
                 Text("Share it with others!")
-                    
+                
                 let qrCode = Image(uiImage: UIImage(data: selectedEvent.qrCode ?? Data()) ?? UIImage())
                 qrCode
                     .resizable()
@@ -102,20 +103,24 @@ struct EventDetails: View {
                 
                 Button {
                     let imageSaver = ImageSaver()
+                    guard let data = selectedEvent.qrCode,
+                          let uiImage: UIImage = UIImage(data: data) else{return}
+                    imageSaver.writeToPhotoAlbum(image: uiImage)
+                    //                    if let data = selectedEvent.qrCode,
+                    //                       let uiImage: UIImage = UIImage(data: data) {
+                    //                        imageSaver.writeToPhotoAlbum(image: uiImage)
+                    //                    }
                     
-                    if let data = selectedEvent.qrCode,
-                       let uiImage: UIImage = UIImage(data: data) {
-                        imageSaver.writeToPhotoAlbum(image: uiImage)
-                    }
                 } label: {
                     (Text("Download it here") + Text(Image(systemName: "square.and.arrow.down")))
                         .foregroundColor(.blue)
+                }//NON VIENE FATTO VEDERE PERCHE' SIAMO IN UNA SHEET
+                .alert(isPresented: $showingAlert) {
+                    Alert(title: Text("Photo saved successfully!"), dismissButton: .default(Text("Got it!")))
                 }
-
-                //Label("Download it here", systemImage: "square.and.arrow.down").foregroundColor(Color.cyan)
-                    
+                
             }.presentationDetents([.medium, .large])
-                }
+        }
         .onAppear(){
             if(selectedEvent.category == "Tournament"){
                 localIcon  = "flag.checkered.2.crossed"
@@ -130,7 +135,7 @@ struct EventDetails: View {
                 localIcon = "speaker.wave.2"
                 localGradient = Color.purpleGradient
             }
-                     
+            
         }
         .alert("Are you sure?😢",isPresented: $showingAlert){
             Button {
@@ -146,15 +151,15 @@ struct EventDetails: View {
             }
         }
         .navigationBarTitleDisplayMode(.inline)
-            .toolbar{
-                ToolbarItem{
-                    Button{
-                        showingAlert.toggle()
-                    }label: {
-                        Text("Leave Event").foregroundColor(Color(.red))
-                    }
+        .toolbar{
+            ToolbarItem{
+                Button{
+                    showingAlert.toggle()
+                }label: {
+                    Text("Leave Event").foregroundColor(Color(.red))
                 }
             }
+        }
     }
 }
 

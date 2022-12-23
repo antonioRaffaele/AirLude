@@ -69,6 +69,9 @@ struct EventsPage: View {
                         }
                     }
                 }
+                .onAppear(){
+                    viewModel.fetchEventsArray()
+                }
                 .background(Color(.systemGroupedBackground))
                 .navigationTitle("Events")
                 .toolbar{

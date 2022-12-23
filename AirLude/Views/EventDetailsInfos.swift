@@ -20,7 +20,7 @@ struct EventDetailsInfos: View {
                 Image(systemName: "calendar")
             }.padding(.leading, 16)
             Spacer()
-            Text("\(selectedEvent.eventDate!, formatter: dateFormatter)")
+            Text("\(selectedEvent.eventDate ?? Date(), formatter: dateFormatter)")
                 .padding(.trailing, 20)
         }
         
@@ -31,7 +31,7 @@ struct EventDetailsInfos: View {
                 Image(systemName: "arrowtriangle.down.circle")
             }.padding(.leading, 16)
             Spacer()
-            Text("\(selectedEvent.category!)").padding(.trailing, 20)
+            Text("\(selectedEvent.category ?? "Tournament")").padding(.trailing, 20)
         }
         
         HStack{
