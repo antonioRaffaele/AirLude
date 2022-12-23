@@ -17,6 +17,7 @@ class CoreDataViewModel: ObservableObject{
     @Published var storedStudent: [Student] = []
     @Published var storedCreatedEvent:[Event]?
     @Published var storedAllEvent:[Event]?
+    @Published var studentTmp: Student?
     
     init(){
         container = NSPersistentContainer(name: "AirLude")
@@ -95,32 +96,36 @@ class CoreDataViewModel: ObservableObject{
         return student
     }
     
-    func addEvent(titleIn: String, detailsIn: String, eventDateIn: Date, durationIn: String, categoryIn: String, locationIn: String, idIn: UUID, qrCodeIn: Data, userIn: String){
-        
+    func getStudent(userIn: String){
         let request = NSFetchRequest<Student>(entityName: "Student")
         //        request.predicate = NSPredicate(format: "hasAStudent?.nameSurname == %@",user!)
         do{
             storedStudent = try container.viewContext.fetch(request).filter({ student in
                 student.nameSurname == userIn
             })
-            
-            let newEvent = Event(context: container.viewContext)
-            
-            newEvent.title = titleIn
-            newEvent.details = detailsIn
-            newEvent.eventDate = eventDateIn
-            newEvent.duration = durationIn
-            newEvent.category = categoryIn
-            newEvent.location = locationIn
-            newEvent.id = idIn
-            newEvent.qrCode = qrCodeIn
-            
-            print(storedStudent.first?.nameSurname ?? "")
-            newEvent.hasAStudent = storedStudent.first
-            
+            studentTmp = storedStudent.first
         }catch let error{
-            print("ERROR FETCHING! \(error)")
+                print("ERROR FETCHING! \(error)")
         }
+    }
+    
+    func addEvent(titleIn: String, detailsIn: String, eventDateIn: Date, durationIn: String, categoryIn: String, locationIn: String, idIn: UUID, qrCodeIn: Data, userIn: String){
+            
+        getStudent(userIn: userIn)
+            
+        let newEvent = Event(context: container.viewContext)
+            
+        newEvent.title = titleIn
+        newEvent.details = detailsIn
+        newEvent.eventDate = eventDateIn
+        newEvent.duration = durationIn
+        newEvent.category = categoryIn
+        newEvent.location = locationIn
+        newEvent.id = idIn
+        newEvent.qrCode = qrCodeIn
+        
+        print(storedStudent.first?.nameSurname ?? "")
+        newEvent.hasAStudent = studentTmp
         
         saveContext()
         fetchEventsArray()
@@ -138,7 +143,7 @@ class CoreDataViewModel: ObservableObject{
     func saveContext(){
         do {
             try container.viewContext.save()
-            print("Event saved.")
+            print("Context saved.")
         } catch {
             print(error.localizedDescription)
         }
